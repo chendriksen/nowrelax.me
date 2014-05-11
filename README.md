@@ -7,3 +7,4 @@ Source for nowrelax.me
 - [x] mobile audio
 - [x] better loading and rendering of images
 - [ ] pick images to load based on screen resolution (i.e. Landscape or Portrait)
+- [ ] smarter image array populating - find images in 'images' directory rather than having them hard coded
