@@ -1,0 +1,103 @@
+
+<html>
+	<head>
+		<!-- Made by Christiaan Hendriksen (@chendriksen)-->
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+		<title>Now Relax...</title>
+		
+		<style type="text/css">
+
+			#bg {
+			  position: fixed; 
+			  top: -50%; 
+			  left: -50%; 
+			  width: 200%; 
+			  height: 200%;
+			}
+			#bg img {
+			  position: absolute; 
+			  top: 0; 
+			  left: 0; 
+			  right: 0; 
+			  bottom: 0; 
+			  margin: auto; 
+			  min-width: 50%;
+			  min-height: 50%;
+			}
+
+			p {
+				text-align: center;
+				font-family: 'Open Sans', sans-serif;
+				position: top; 
+				bottom: 0; 
+				width: 100%;
+			}
+
+		</style>
+
+	</head>
+	<body>
+		<div id="bg">
+			<img src="http://cl.ly/image/1b1c412Z3G3c/lake.gif"></img>
+			<img src="http://cl.ly/V0wH/pool.gif"></img>
+			<img src="http://cl.ly/V1YS/indoor.gif"></img>
+			<img src="http://cl.ly/VKbg/waterfall.gif"></img>
+			<img src="http://cl.ly/VJH3/ducks.gif"></img>
+			<img src="http://cl.ly/VJfK/beach.jpg"></img>
+		</div>
+		<p id="loading">Loading Audio & Visuals</br>
+		<p id="instructions">Click to change visual</br>(and try resizing)</p>
+		
+		<script type="text/javascript">  
+
+				function fade(element) {
+		    var op = 1;  // initial opacity
+		    var timer = setInterval(function () {
+		        if (op <= 0.1){
+		            clearInterval(timer);
+		            element.style.display = 'none';
+		        }
+		        element.style.opacity = op;
+		        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+		        op -= op * 0.1;
+		    }, 1000);
+}
+
+			myAudio = new Audio('http://cl.ly/471k1w1s0k0y/soundslong.ogg');
+			myAudio.loop = true;
+			myAudio.play();
+
+				window.onload = function() {
+					document.getElementById("loading").style.display="none";
+					fade(instructions);
+				};
+
+				var index=0; 
+
+				// workaround for playing audio on mobile
+				audioPlaying = false;	
+				
+				bg.onclick = function() {
+				      [].forEach.call(document.images,function (v,i) { document.images[i].hidden = i!==index});
+				      index = (index+1) % document.images.length;
+
+				      if (audioPlaying == false) {
+				      		myAudio.play();
+				      }
+				}
+	
+		</script>  
+
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-9390923-8', 'nowrelax.me');
+		  ga('send', 'pageview');
+
+		</script>
+	</body>
+</html>
