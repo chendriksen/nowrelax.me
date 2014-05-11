@@ -1,4 +1,9 @@
 nowrelax.me
 ===========
 
-Live version of the nowrelax.me site
+Source for nowrelax.me
+
+- [x] add audio for desktop
+- [x] mobile audio
+- [x] better loading and rendering of images
+- [ ] pick images to load based on screen resolution (i.e. Landscape or Portrait)
