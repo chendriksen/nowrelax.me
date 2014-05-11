@@ -39,19 +39,14 @@
 	</head>
 	<body>
 		<div id="bg">
-			<img src="http://cl.ly/image/1b1c412Z3G3c/lake.gif"></img>
-			<img src="http://cl.ly/V0wH/pool.gif"></img>
-			<img src="http://cl.ly/V1YS/indoor.gif"></img>
-			<img src="http://cl.ly/VKbg/waterfall.gif"></img>
-			<img src="http://cl.ly/VJH3/ducks.gif"></img>
-			<img src="http://cl.ly/VJfK/beach.jpg"></img>
+			<img id="scene" src="http://cl.ly/image/1b1c412Z3G3c/lake.gif"></img>
 		</div>
 		<p id="loading">Loading Audio & Visuals</br>
 		<p id="instructions">Click to change visual</br>(and try resizing)</p>
 		
 		<script type="text/javascript">  
 
-				function fade(element) {
+		function fade(element) {
 		    var op = 1;  // initial opacity
 		    var timer = setInterval(function () {
 		        if (op <= 0.1){
@@ -62,29 +57,45 @@
 		        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
 		        op -= op * 0.1;
 		    }, 1000);
-}
+		}
 
 			myAudio = new Audio('http://cl.ly/471k1w1s0k0y/soundslong.ogg');
 			myAudio.loop = true;
 			myAudio.play();
 
+			imageArray = ["http://cl.ly/V0wH/pool.gif", "http://cl.ly/V1YS/indoor.gif","http://cl.ly/VKbg/waterfall.gif","http://cl.ly/VJH3/ducks.gif","http://cl.ly/VJfK/beach.jpg"];
+
+			imageFiles = [];
+
+			// start loading images
+			for(var i=0;i<imageArray.length;i++) {
+				imageFiles[i] = new Image();
+				imageFiles[i].src = imageArray[i];
+			}
+
 				window.onload = function() {
-					document.getElementById("loading").style.display="none";
+					document.getElementById("scene").src = imageFiles[arrayIndex].src;
 					fade(instructions);
 				};
 
-				var index=0; 
+				var arrayIndex=0; 
 
 				// workaround for playing audio on mobile
 				audioPlaying = false;	
 				
 				bg.onclick = function() {
-				      [].forEach.call(document.images,function (v,i) { document.images[i].hidden = i!==index});
-				      index = (index+1) % document.images.length;
+					if (arrayIndex == imageFiles.length-1) {
+						arrayIndex = 0;
+					} else {
+						arrayIndex ++
+					}
 
+				    document.getElementById("scene").src = imageFiles[arrayIndex].src;
+				    
 				      if (audioPlaying == false) {
 				      		myAudio.play();
 				      }
+
 				}
 	
 		</script>  
