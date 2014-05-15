@@ -36,6 +36,13 @@
 				width: 100%;
 			}
 
+			#mute {
+				position: fixed;
+				bottom: 20px;
+				right: 20px;
+				height: 3em;
+			}
+
 		</style>
 
 	</head>
@@ -43,8 +50,9 @@
 		<div id="bg">
 			<img id="scene" src="pics/lake.gif"></img>
 		</div>
-		<p id="loading">Loading Audio & Visuals</br>
+		<p id="loading">Loading Audio & Visuals</br></p>
 		<p id="instructions">Click to change visual</br>(and try resizing)</p>
+		<img src="pics/sound.png" id="mute">
 		
 		<script type="text/javascript">  
 
@@ -68,6 +76,7 @@
 			imageArray = ["pics/pool.gif", "pics/indoorpool.gif","pics/waterfall.gif","pics/ducks.gif","pics/beach.jpg", "pics/lake.gif"];
 
 			imageFiles = [];
+			muted = false;
 
 			// start loading images
 			for(var i=0;i<imageArray.length;i++) {
@@ -98,6 +107,19 @@
 				      		myAudio.play();
 				      }
 
+				}
+
+				mute.onclick = function() {
+
+					if (muted == true){
+						document.getElementById("mute").src = "pics/sound.png";
+						myAudio.play();
+						muted = false;
+					} else {
+						document.getElementById("mute").src = "pics/mute.png";
+						myAudio.pause();
+						muted = true;
+					}
 				}
 	
 		</script>  
