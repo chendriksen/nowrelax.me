@@ -40,7 +40,14 @@
 				position: fixed;
 				bottom: 20px;
 				right: 20px;
-				height: 3em;
+				width: 3em;
+			}
+
+			#fullscreen {
+				position: fixed;
+				bottom: 20px;
+				right: 5em;
+				width: 3em;
 			}
 
 		</style>
@@ -51,8 +58,9 @@
 			<img id="scene" src="pics/lake.gif"></img>
 		</div>
 		<p id="loading">Loading Audio & Visuals</br></p>
-		<p id="instructions">Click to change visual</br>Made by <a href="http://www.twitter.com/chendriksen" target="_blank">@chendriksen</a></p>
+		<p id="instructions">Click to change visual</br>Made by <a href="http://www.twitter.com/chendriksen">@chendriksen</a><p>
 		<img src="pics/sound.png" id="mute">
+		<img src="pics/fullscreen.png" id="fullscreen">
 		
 		<script type="text/javascript">  
 
@@ -121,6 +129,17 @@
 						muted = true;
 					}
 				}
+
+				fullscreen.onclick = function() {
+				    var
+				          el = document.documentElement
+				        , rfs =
+				               el.requestFullScreen
+				            || el.webkitRequestFullScreen
+				            || el.mozRequestFullScreen
+				    ;
+				    rfs.call(el);
+				};
 	
 		</script>  
 
